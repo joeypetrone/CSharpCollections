@@ -4,9 +4,13 @@ using System.Text;
 
 namespace CSharpCollections.RandomSquare
 {
-    class RandomSquare
+    class RandomSquare : ConsoleApp
     {
-        public void Run()
+        public RandomSquare()
+        {
+            Name = "Random Square";
+        }
+        public override void Run()
         {
             Console.WriteLine("In Random Square");
         }

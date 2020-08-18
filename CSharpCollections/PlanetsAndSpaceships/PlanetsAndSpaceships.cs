@@ -4,11 +4,15 @@ using System.Text;
 
 namespace CSharpCollections.PlanetsAndSpaceships
 {
-    class PlanetsAndSpaceships
+    class PlanetsAndSpaceships : ConsoleApp
     {
-        public void Run()
+        public PlanetsAndSpaceships()
         {
-            Console.WriteLine("In Planets and Spaceships");
+            Name = "Planets And Spaceships";
+        }
+        public override void Run()
+        {
+            Console.WriteLine("In Planets And Spaceships");
         }
     }
 }

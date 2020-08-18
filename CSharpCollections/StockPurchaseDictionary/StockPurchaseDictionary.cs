@@ -4,9 +4,13 @@ using System.Text;
 
 namespace CSharpCollections.StockPurchaseDictionary
 {
-    class StockPurchaseDictionary
+    class StockPurchaseDictionary : ConsoleApp
     {
-        public void Run()
+        public StockPurchaseDictionary()
+        {
+            Name = "Stock Purchase Dictionary";
+        }
+        public override void Run()
         {
             Console.WriteLine("In Stock Purchase Dictionary");
         }

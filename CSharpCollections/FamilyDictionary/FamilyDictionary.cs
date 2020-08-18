@@ -4,9 +4,13 @@ using System.Text;
 
 namespace CSharpCollections.FamilyDictionary
 {
-    class FamilyDictionary
+    class FamilyDictionary : ConsoleApp
     {
-        public void Run()
+        public FamilyDictionary()
+        {
+            Name = "Family Dictionary";
+        }
+        public override void Run()
         {
             Console.WriteLine("In Family Dictionary");
         }

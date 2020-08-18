@@ -4,9 +4,13 @@ using System.Text;
 
 namespace CSharpCollections.AnythingButCreed
 {
-    class AnythingButCreed
+    class AnythingButCreed : ConsoleApp
     {
-        public void Run()
+        public AnythingButCreed()
+        {
+            Name = "Anything But Creed";
+        }
+        public override void Run()
         {
             Console.WriteLine("In Anything But Creed");
         }
