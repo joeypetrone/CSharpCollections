@@ -43,6 +43,14 @@ namespace CSharpCollections.RandomSquare
                 Console.WriteLine($"{numberPair.RandomSquaredNumber} is square root of {numberPair.RandomNumber}.");
                 Console.WriteLine("");
             }
+
+            randomSquaredNumberList.RemoveAll(number => number % 2 != 0);
+
+            foreach (var randomSquared in randomSquaredNumberList)
+            {
+                Console.WriteLine($"{randomSquared} is even and thus was not removed.");
+            }
+
         }
     }
 }
