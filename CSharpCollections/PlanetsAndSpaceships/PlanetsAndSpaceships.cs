@@ -39,51 +39,104 @@ namespace CSharpCollections.PlanetsAndSpaceships
 
             //Spaceship Dictionary
 
-            var spaceships = new Dictionary<string, List<string>>()
+            var spaceshipsDictionary = new Dictionary<string, List<string>>()
             {
                 {
-                    "Mercury", 
-                    new List<string>() { "Mariner 10", "MESSENGER" }
+                    "Mariner 10",
+                    new List<string>() { "Mercury", "Venus" , "Earth" }
                 },
                 {
-                    "Venus",
-                    new List<string>() { "Mariner 2", "Mariner 5", "Mariner 10", "Galileo", "Magellan", "Cassini", "MESSENGER" }
+                    "MESSENGER",
+                    new List<string>() { "Mercury", "Venus" }
                 },
                 {
-                    "Earth",
-                    new List<string>() { "Mariner 10", "Pioneer 10", "Pioneer 11", "Voyager 1", "Voyager 2" }
+                    "Galileo",
+                    new List<string>() { "Venus", "Jupiter" }
                 },
                 {
-                    "Mars",
-                    new List<string>() { "Mariner 4", "Mariner 6", "Mariner 7", "Mariner 9", "Viking 1", "Viking 2", "Odyssey", "Curiosity", "InSight" }
+                    "Cassini",
+                    new List<string>() { "Venus", "Jupiter", "Saturn" }
                 },
                 {
-                    "Jupiter",
-                    new List<string>() { "Pioneer 10", "Pioneer 11", "Voyager 1", "Voyager 2", "Galileo", "Cassini", "Juno" }
+                    "Pioneer 10",
+                    new List<string>() { "Earth", "Jupiter" }
                 },
                 {
-                    "Saturn",
-                    new List<string>() { "Pioneer 11", "Voyager 1", "Voyager 2", "Cassini" }
+                    "Pioneer 11",
+                    new List<string>() { "Earth", "Jupiter", "Saturn" }
                 },
                 {
-                    "Uranus",
-                    new List<string>() { "Voyager 2" }
-                },                
+                    "Voyager 1",
+                    new List<string>() { "Earth", "Jupiter", "Saturn" }
+                },
                 {
-                    "Neptune",
-                    new List<string>() { "Voyager 2" }
-                }
+                    "Voyager 2",
+                    new List<string>() { "Earth", "Jupiter", "Saturn", "Uranus", "Neptune" }
+                },
+                {
+                    "Odyssey",
+                    new List<string>() { "Mars" }
+                },
+                {
+                    "Curiosity",
+                    new List<string>() { "Mars" }
+                },
+                {
+                    "InSight",
+                    new List<string>() { "Mars" }
+                },
             };
 
-            foreach (var planet in spaceships)
+            foreach (var planet in planetList)
             {
-                Console.WriteLine($"{planet.Key}:");
-                foreach ( var spacechip in planet.Value)
+                var planetSpaceships = new List<string>();
+                
+                foreach (var spaceship in spaceshipsDictionary)
                 {
-                    Console.WriteLine($"    {spacechip}");
+                    if (spaceship.Value.Contains(planet))
+                    {
+                        planetSpaceships.Add(spaceship.Key);
+                    }
                 }
+
+                var spaceshipList = string.Join(", ", planetSpaceships);
+
+                Console.WriteLine($"{planet}: {spaceshipList}");
             }
 
+            // Spaceships that visited each planet (DATA)
+            //{
+            //    "Mercury", 
+            //    new List<string>() { "Mariner 10", "MESSENGER" }
+            //},
+            //{
+            //    "Venus",
+            //    new List<string>() { "Mariner 2", "Mariner 5", "Mariner 10", "Galileo", "Magellan", "Cassini", "MESSENGER" }
+            //},
+            //{
+            //    "Earth",
+            //    new List<string>() { "Mariner 10", "Pioneer 10", "Pioneer 11", "Voyager 1", "Voyager 2" }
+            //},
+            //{
+            //    "Mars",
+            //    new List<string>() { "Mariner 4", "Mariner 6", "Mariner 7", "Mariner 9", "Viking 1", "Viking 2", "Odyssey", "Curiosity", "InSight" }
+            //},
+            //{
+            //    "Jupiter",
+            //    new List<string>() { "Pioneer 10", "Pioneer 11", "Voyager 1", "Voyager 2", "Galileo", "Cassini", "Juno" }
+            //},
+            //{
+            //    "Saturn",
+            //    new List<string>() { "Pioneer 11", "Voyager 1", "Voyager 2", "Cassini" }
+            //},
+            //{
+            //    "Uranus",
+            //    new List<string>() { "Voyager 2" }
+            //},                
+            //{
+            //    "Neptune",
+            //    new List<string>() { "Voyager 2" }
+            //}
 
         }
     }
