@@ -19,28 +19,28 @@ namespace CSharpCollections.FamilyDictionary
             myFamily.Add("mother", new Dictionary<string, string>() { { "name", "Carolyn" }, { "age", "64" } });
             myFamily.Add("father", new Dictionary<string, string>() { { "name", "Winford" }, { "age", "65" } });
 
-            foreach (var member in myFamily)
-            {
-                var familyMemberName = "";
-                var familyMemberAge = "";
+            var familyMemberName = "";
+            var familyMemberAge = "";
 
-                foreach (var description in member.Value)
+            foreach (var (member, descriptions) in myFamily)
+            {
+                foreach (var (description, value) in descriptions)
                 {
-                    if (description.Key == "name")
+                    if (description.Equals("name", StringComparison.OrdinalIgnoreCase))
                     {
-                        familyMemberName = description.Value;
+                        familyMemberName = value;
                     }
-                    else if (description.Key == "age")
+                    else if (description.Equals("age", StringComparison.OrdinalIgnoreCase))
                     {
-                        familyMemberAge = description.Value;
+                        familyMemberAge = value;
                     }
                     else
                     {
-                        Console.WriteLine($"Error in {member.Key} description");
+                        Console.WriteLine($"Error in {member} description");
                     }
                 }
 
-                Console.WriteLine($"{familyMemberName} is my {member.Key} and is {familyMemberAge} years old.");
+                Console.WriteLine($"{familyMemberName} is my {member} and is {familyMemberAge} years old.");
             }
 
         }

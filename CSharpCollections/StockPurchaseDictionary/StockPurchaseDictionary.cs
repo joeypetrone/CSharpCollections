@@ -13,7 +13,7 @@ namespace CSharpCollections.StockPurchaseDictionary
         }
         public override void Run()
         {
-            Dictionary<string, string> stocks = new Dictionary<string, string>();
+            var stocks = new Dictionary<string, string>();
             stocks.Add("GM", "General Motors");
             stocks.Add("CAT", "Caterpillar");
             stocks.Add("DJI", "Dow Jones Industrial");
@@ -54,13 +54,13 @@ namespace CSharpCollections.StockPurchaseDictionary
             // Iterate over the purchases and update the valuation for each stock
             foreach ((string ticker, int shares, double price) purchase in purchases)
             {
-                var totalValue = (double)purchase.shares * purchase.price;
+                var totalValue = (double) purchase.shares * purchase.price;
 
                 if (finalStockReport.ContainsKey(purchase.ticker))
                 {
                     Console.WriteLine($"{purchase.ticker} already there.");
-                    finalStockReport[purchase.ticker] = finalStockReport[purchase.ticker] + (int)totalValue;
-                    Console.WriteLine($"{finalStockReport[purchase.ticker]} plus {(int) totalValue}");
+                    Console.WriteLine($"{finalStockReport[purchase.ticker]} plus {(int)totalValue}");
+                    finalStockReport[purchase.ticker] = finalStockReport[purchase.ticker] + (int) totalValue;
                 }
                 else
                 {
@@ -68,9 +68,9 @@ namespace CSharpCollections.StockPurchaseDictionary
                 }
             }
 
-            foreach (var report in finalStockReport)
+            foreach (var (company, price) in finalStockReport)
             {
-                Console.WriteLine($"{report.Key}: {report.Value}");
+                Console.WriteLine($"{company}: {price}");
             }
         }
     }

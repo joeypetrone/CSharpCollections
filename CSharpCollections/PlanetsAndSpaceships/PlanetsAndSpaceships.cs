@@ -12,30 +12,30 @@ namespace CSharpCollections.PlanetsAndSpaceships
         }
         public override void Run()
         {
-            List<string> planetList = new List<string>() { "Mercury", "Mars" };
+            List<string> planetsList = new List<string>() { "Mercury", "Mars" };
 
-            planetList.Add("Jupiter");
-            planetList.Add("Saturn");
+            planetsList.Add("Jupiter");
+            planetsList.Add("Saturn");
 
             List<string> lastTwoPlanets = new List<string>() { "Uranus", "Neptune" };
 
-            planetList.AddRange(lastTwoPlanets);
+            planetsList.AddRange(lastTwoPlanets);
 
-            planetList.Insert(1, "Venus");
+            planetsList.Insert(1, "Venus"); // Insert at index 1
 
-            planetList.Insert(2, "Earth");
+            planetsList.Insert(2, "Earth"); // Insert at index 2
 
-            planetList.Add("Pluto");
+            planetsList.Add("Pluto");
 
-            var rockyPlanets = planetList.GetRange(0, 4);
+            var rockyPlanets = planetsList.GetRange(0, 4);
 
-            planetList.ForEach(Console.WriteLine);
+            planetsList.ForEach(Console.WriteLine);
 
             Console.WriteLine("Rocky Planets:");
 
             rockyPlanets.ForEach(Console.WriteLine);
 
-            planetList.Remove("Pluto");
+            planetsList.Remove("Pluto");
 
             //Spaceship Dictionary
 
@@ -87,7 +87,7 @@ namespace CSharpCollections.PlanetsAndSpaceships
                 },
             };
 
-            foreach (var planet in planetList)
+            foreach (var planet in planetsList)
             {
                 var planetSpaceships = new List<string>();
                 
