@@ -14,23 +14,26 @@ namespace CSharpCollections.RandomSquare
         {
             Random random = new Random();
 
-            var randomNumberList = new List<int>();
+            var randomNumbersList = new List<int>();
 
             for (int i = 0; i < 20; i++)
             {
-                randomNumberList.Add(random.Next(1, 50));
+                randomNumbersList.Add(random.Next(1, 51));
             }
 
-            var randomSquaredNumberList = new List<int>();
+            var randomSquaredNumbersList = new List<int>();
 
-            foreach (var number in randomNumberList)
+            foreach (var number in randomNumbersList)
             {
-                randomSquaredNumberList.Add(number * number);
+                randomSquaredNumbersList.Add(number * number);
             }
 
-            var bothNumberListsCombined = randomNumberList.Zip
+
+            var combined = randomNumbersList.Select(number => new { RandomNumber = number, Squared = number * number });
+
+            var bothNumberListsCombined = randomNumbersList.Zip
                 (
-                randomSquaredNumberList,
+                randomSquaredNumbersList,
                 (randomNumber, randomSquaredNumber) => new
                 {
                     RandomNumber = randomNumber, 
@@ -44,9 +47,9 @@ namespace CSharpCollections.RandomSquare
                 Console.WriteLine("");
             }
 
-            randomSquaredNumberList.RemoveAll(number => number % 2 != 0);
+            randomSquaredNumbersList.RemoveAll(number => number % 2 != 0);
 
-            foreach (var randomSquared in randomSquaredNumberList)
+            foreach (var randomSquared in randomSquaredNumbersList)
             {
                 Console.WriteLine($"{randomSquared} is even and thus was not removed.");
             }
