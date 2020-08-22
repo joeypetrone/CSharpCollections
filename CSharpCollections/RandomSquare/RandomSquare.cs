@@ -21,39 +21,25 @@ namespace CSharpCollections.RandomSquare
                 randomNumbersList.Add(random.Next(1, 51));
             }
 
-            var randomSquaredNumbersList = new List<int>();
+            var combined = randomNumbersList.Select(number => new { RandomNumber = number, Squared = number * number }).ToList();
 
-            foreach (var number in randomNumbersList)
+            foreach (var pair in combined)
             {
-                randomSquaredNumbersList.Add(number * number);
-            }
+                Console.WriteLine($"\n{pair.Squared} is square root of {pair.RandomNumber}.");
 
-
-            var combined = randomNumbersList.Select(number => new { RandomNumber = number, Squared = number * number });
-
-            var bothNumberListsCombined = randomNumbersList.Zip
-                (
-                randomSquaredNumbersList,
-                (randomNumber, randomSquaredNumber) => new
+                if (pair.Squared % 2 == 0)
                 {
-                    RandomNumber = randomNumber, 
-                    RandomSquaredNumber = randomSquaredNumber 
-                });
-
-            Console.WriteLine("");
-            foreach (var numberPair in bothNumberListsCombined)
-            {
-                Console.WriteLine($"{numberPair.RandomSquaredNumber} is square root of {numberPair.RandomNumber}.");
-                Console.WriteLine("");
+                    Console.WriteLine($"{pair.Squared} is even and thus will not removed.");
+                }
+                else
+                {
+                    Console.WriteLine($"{pair.Squared} is odd and will be removed.");
+                }
             }
 
-            randomSquaredNumbersList.RemoveAll(number => number % 2 != 0);
-
-            foreach (var randomSquared in randomSquaredNumbersList)
-            {
-                Console.WriteLine($"{randomSquared} is even and thus was not removed.");
-            }
-
+            combined.RemoveAll(number => number.Squared % 2 != 0);
+            Console.WriteLine("\nEven Number Data:");
+            combined.ForEach(Console.WriteLine);
         }
     }
 }
